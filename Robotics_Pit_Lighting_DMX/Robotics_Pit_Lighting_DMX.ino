@@ -32,6 +32,7 @@ void loop()
   while(Serial.available())
   {
     data = Serial.readString();
+    data.trim();
     //Serial.println("RECEIVED: " + data);
     if(data == "mood")
     {
@@ -47,16 +48,16 @@ void loop()
     }
     if(data == "rainbow")
     {
-      //scene = 3;
+      scene = 3;
       //rainbow();
-      //Serial.println("Rainbow mode set");
-      Serial.println("You do not have permissions. This event will be reported.");
+      Serial.println("Rainbow mode set");
+      //Serial.println("You do not have permissions. This event will be reported.");
     }
     if(data == "pink")
     {
-      //scene = 4;
-      //Serial.println("Annoying Nick Abbott...");
-      Serial.println("You do not have permissions. This event will be reported.");
+      scene = 4;
+      Serial.println("Annoying Nick Abbott...");
+      //Serial.println("You do not have permissions. This event will be reported.");
     }
   }
 
@@ -149,4 +150,3 @@ void setColor(int f, int r, int g, int b, int u)
   DmxSimple.write(f+2, b);
   DmxSimple.write(f+3, u);
 }
-

@@ -65,19 +65,22 @@ void loop()
     lmBlue();
     done = true; 
     mode = 1;
+    data = "blue";
     Serial.println("Diagnostic process complete. You may enter instructions.");
   }
 
    while(Serial.available())
   {
     data = Serial.readString();
+    data.trim();
+  
     //Serial.println("RECEIVED: " + data);
     if(data == "blue")
     {
       mode = 1;
       Serial.println("Blue lights mode set!");
     }
-    else if(data == "rainbow")
+    else if(data == "rainbow" or data == "gay")
     {
       mode = 2;
       Serial.println("Colors lights mode set!");
@@ -395,5 +398,3 @@ void updateStrips()
     strip8.show();
   }
 }
-
-
